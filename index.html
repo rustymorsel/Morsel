@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Morsel</title>
   <meta name="theme-color" content="#0f0f10" />
-
-  <!-- CACHE BUST so your phone always loads latest -->
-  <link rel="stylesheet" href="style.css?v=1" />
+  <!-- CACHE BUST -->
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 
 <body>
@@ -44,15 +43,15 @@
     </div>
   </header>
 
-  <!-- NAV -->
-<nav class="nav">
-  <button class="navbtn active" data-view="recipesView">Recipes</button>
-  <button class="navbtn" data-view="finderView">Finder</button>
-  <button class="navbtn" data-view="bookView">My Book</button>
-  <button class="navbtn" data-view="shopView">Shop</button>
-  <button class="navbtn" data-view="addView">Add</button>
-  <button class="navbtn" data-view="cocktailsView">Cocktails</button>
-</nav>
+  <!-- NAV (NOTE: data-view, NOT data-view="...") -->
+  <nav class="nav">
+    <button class="navbtn active" data-view="recipesView">Recipes</button>
+    <button class="navbtn" data-view="finderView">Finder</button>
+    <button class="navbtn" data-view="bookView">My Book</button>
+    <button class="navbtn" data-view="shopView">Shop</button>
+    <button class="navbtn" data-view="addView">Add</button>
+    <button class="navbtn" data-view="cocktailsView">Cocktails</button>
+  </nav>
 
   <main class="main">
 
@@ -163,7 +162,7 @@
         <div>
           <div class="section-title">Favourites</div>
           <div id="favsList" class="cards"></div>
-          <div id="favsEmpty" class="empty hidden">No favourites yet. Tap ♡.</div>
+          <div id="favsEmpty" class="empty hidden">No favourites yet. Tap ♥.</div>
         </div>
 
         <div>
@@ -178,7 +177,7 @@
     <section id="shopView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Shopping List</div>
-        <div class="panel-sub">Use your phone mic to dictate items.</div>
+        <div class="panel-sub">Tap an item to tick it off.</div>
 
         <div class="row">
           <input id="shopInput" class="input" placeholder="Add item..." />
@@ -250,6 +249,6 @@
   </main>
 
   <!-- CACHE BUST -->
-  <script src="script.js?v=1"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

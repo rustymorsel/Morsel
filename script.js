@@ -1,4 +1,4 @@
-/* /* Morsel (static GitHub Pages)
+/* Morsel (static GitHub Pages)
    - Tabs/views + working nav
    - Age gate for Cocktails
    - Seed 1000s of recipes (procedural) on first run
@@ -739,4 +739,4 @@ function pickAllergens(pool, i, chance=0.15){
     return Array.from(new Set([a,b]));
   }
   return [a];
-}
+                                }

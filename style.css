@@ -262,3 +262,58 @@ a{color:inherit}
 }
 .modal-title{font-weight:1000;font-size:16px}
 .modal-text{color:var(--muted);margin-top:6px;line-height:1.35}
+/* === AGE GATE === */
+.hidden { display: none !important; }
+
+.agegate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.agegate-card {
+  width: min(420px, 100%);
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 18px;
+  padding: 18px;
+  color: #fff;
+  text-align: center;
+}
+
+.agegate-card h2 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+}
+
+.agegate-card p {
+  margin: 0 0 14px 0;
+  opacity: 0.85;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.agegate-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.agegate-actions .btn {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.agegate-actions .btn.subtle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+}

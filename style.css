@@ -262,3 +262,4 @@ a{color:inherit}
 }
 .modal-title{font-weight:1000;font-size:16px}
 .modal-text{color:var(--muted);margin-top:6px;line-height:1.35}
+.hidden { display: none !important; }

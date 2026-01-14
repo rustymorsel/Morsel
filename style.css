@@ -28,7 +28,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   background:linear-gradient(135deg,var(--accent),#ff6a00);
   color:#111;font-weight:900;
 }
-.title{font-weight:800}
+.title{font-weight:900}
 .tagline{color:var(--muted);font-size:12px;margin-top:2px}
 .top-actions{display:flex;gap:8px;align-items:center}
 
@@ -46,7 +46,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   color:var(--text);
   padding:10px 12px;
   border-radius:14px;
-  font-weight:700;
+  font-weight:800;
   cursor:pointer;
   white-space:nowrap;
 }
@@ -60,11 +60,12 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   padding:12px;
   margin:10px 0 12px;
 }
-.panel-title{font-weight:900;font-size:16px}
+.panel-title{font-weight:1000;font-size:16px}
 .panel-sub{color:var(--muted);font-size:13px;margin-top:4px}
 
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
 .grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+
 @media(min-width:900px){
   .grid{grid-template-columns:1fr 1fr}
   .textarea{grid-column:1 / -1}
@@ -89,7 +90,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   color:var(--text);
   padding:11px 14px;
   border-radius:14px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 .btn.subtle{
@@ -103,7 +104,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   background:rgba(255,176,0,.12);
   padding:9px 12px;
   border-radius:999px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 .chip.subtle{
@@ -129,7 +130,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   padding:12px 12px 6px;
   display:flex;justify-content:space-between;gap:10px;align-items:flex-start;
 }
-.card-title{font-weight:900}
+.card-title{font-weight:1000}
 .card-meta{color:var(--muted);font-size:12px;margin-top:4px}
 .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .badge{
@@ -162,7 +163,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   background:transparent;
   padding:7px 10px;
   border-radius:999px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
   font-size:12px;
 }
@@ -185,13 +186,13 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   color:var(--muted);
   padding:8px 10px;
   border-radius:12px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
   font-size:12px;
 }
 .actionbtn.primary{border-color:rgba(255,176,0,.35);color:var(--text);background:rgba(255,176,0,.10)}
 
-.section-title{font-weight:900;margin:10px 0 6px}
+.section-title{font-weight:1000;margin:10px 0 6px}
 .empty{
   text-align:center;
   color:var(--muted);
@@ -221,7 +222,10 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   cursor:pointer;
 }
 
-/* Modal */
+/* Finder chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+
+/* Modal (Age Gate) */
 .modal{
   position:fixed;inset:0;
   background:rgba(0,0,0,.7);

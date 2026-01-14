@@ -5,22 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Morsel</title>
   <meta name="theme-color" content="#0f0f10" />
-  <link rel="stylesheet" href="style.css?v=1">
-<script src="script.js?v=1"></script>
+
+  <!-- CACHE BUST so your phone always loads latest -->
+  <link rel="stylesheet" href="style.css?v=1" />
 </head>
 
 <body>
-  <!-- AGE GATE MODAL -->
-  <div id="ageGate" class="modal hidden">
+
+  <!-- AGE GATE (required for Cocktails) -->
+  <div id="ageGate" class="modal hidden" aria-hidden="true">
     <div class="modal-card">
-      <div class="modal-title">Age check</div>
+      <div class="modal-title">18+ only</div>
       <div class="modal-text">
         Cocktails contain alcohol. Are you of legal drinking age where you live?
       </div>
+
       <div class="row">
         <button id="ageYes" class="btn">Yes</button>
         <button id="ageNo" class="btn subtle">No</button>
       </div>
+
       <div class="small note">Saved on this device only.</div>
     </div>
   </div>
@@ -40,16 +44,20 @@
     </div>
   </header>
 
+  <!-- NAV -->
   <nav class="nav">
     <button class="navbtn active" data-view="recipesView">Recipes</button>
     <button class="navbtn" data-view="finderView">Finder</button>
     <button class="navbtn" data-view="bookView">My Book</button>
     <button class="navbtn" data-view="shopView">Shop</button>
     <button class="navbtn" data-view="addView">Add</button>
+
+    <!-- IMPORTANT: this exact button triggers the age gate -->
     <button class="navbtn" data-view="cocktailsView">Cocktails</button>
   </nav>
 
   <main class="main">
+
     <!-- RECIPES -->
     <section id="recipesView" class="view">
       <div class="panel">
@@ -66,7 +74,7 @@
 
         <div class="row">
           <select id="allergenFilter" class="input select">
-            <option value="">All allergens (no filter)</option>
+            <option value="">Allergens (no filter)</option>
             <option value="Gluten">Gluten</option>
             <option value="Dairy">Dairy</option>
             <option value="Eggs">Eggs</option>
@@ -80,7 +88,7 @@
           </select>
 
           <select id="moodFilter" class="input select">
-            <option value="">All moods (no filter)</option>
+            <option value="">Moods (no filter)</option>
             <option value="Comfort">Comfort</option>
             <option value="Quick">Quick</option>
             <option value="Healthy">Healthy</option>
@@ -104,10 +112,10 @@
     <section id="finderView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Ingredient Finder</div>
-        <div class="panel-sub">Add what you have — see what you can make.</div>
+        <div class="panel-sub">Add what you have → see what you can make.</div>
 
         <div class="row">
-          <input id="finderInput" class="input" placeholder="Type ingredient and tap Add (e.g., onion)" />
+          <input id="finderInput" class="input" placeholder="Type ingredient (e.g., onion)" />
           <button id="finderAddBtn" class="btn">Add</button>
         </div>
 
@@ -121,11 +129,11 @@
         <div class="row">
           <select id="finderType" class="input select">
             <option value="food">Food</option>
-            <option value="all">All (Food + Cocktails)</option>
+            <option value="all">All</option>
           </select>
 
           <select id="finderAllergenFilter" class="input select">
-            <option value="">All allergens (no filter)</option>
+            <option value="">Allergens (no filter)</option>
             <option value="Gluten">Gluten</option>
             <option value="Dairy">Dairy</option>
             <option value="Eggs">Eggs</option>
@@ -143,7 +151,7 @@
       </div>
 
       <div id="finderResults" class="cards"></div>
-      <div id="finderEmpty" class="empty hidden">Add a few ingredients to start.</div>
+      <div id="finderEmpty" class="empty hidden">Add ingredients to start.</div>
     </section>
 
     <!-- MY BOOK -->
@@ -157,13 +165,13 @@
         <div>
           <div class="section-title">Favourites</div>
           <div id="favsList" class="cards"></div>
-          <div id="favsEmpty" class="empty hidden">No favourites yet. Tap ♡ on any recipe.</div>
+          <div id="favsEmpty" class="empty hidden">No favourites yet. Tap ♡.</div>
         </div>
 
         <div>
           <div class="section-title">My Recipes</div>
           <div id="myRecipesList" class="cards"></div>
-          <div id="myRecipesEmpty" class="empty hidden">No personal recipes yet. Add one in Add.</div>
+          <div id="myRecipesEmpty" class="empty hidden">No personal recipes yet.</div>
         </div>
       </div>
     </section>
@@ -172,10 +180,10 @@
     <section id="shopView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Shopping List</div>
-        <div class="panel-sub">Use your phone’s mic on the keyboard to dictate items.</div>
+        <div class="panel-sub">Use your phone mic to dictate items.</div>
 
         <div class="row">
-          <input id="shopInput" class="input" placeholder="Add an item (e.g., milk, limes, 2 tomatoes)" />
+          <input id="shopInput" class="input" placeholder="Add item..." />
           <button id="shopAddBtn" class="btn">Add</button>
           <button id="shopClearBtn" class="btn subtle">Clear</button>
         </div>
@@ -189,7 +197,6 @@
     <section id="addView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Add a Recipe</div>
-        <div class="panel-sub">Tabs are auto-built: History / Ingredients / Method / Variations / Rate</div>
 
         <div class="grid">
           <input id="addName" class="input" placeholder="Recipe name" />
@@ -198,16 +205,16 @@
             <option value="cocktail">Cocktail</option>
           </select>
 
-          <input id="addMoods" class="input" placeholder="Mood tags (comma, max 3) e.g., Comfort, Quick" />
+          <input id="addMoods" class="input" placeholder="Mood tags (comma) e.g., Comfort, Quick" />
           <input id="addLevel" class="input" type="number" min="1" max="5" placeholder="Morsel Level (1-5)" />
 
           <input id="addAllergens" class="input" placeholder="Allergens (comma) e.g., Dairy, Gluten" />
-          <input id="addServes" class="input" placeholder="Serves (food) / Glasses (cocktails)" />
+          <input id="addServes" class="input" placeholder="Serves / Glasses" />
 
           <textarea id="addHistory" class="input textarea" placeholder="Meal history"></textarea>
-          <textarea id="addIngredients" class="input textarea" placeholder="Ingredients (one per line)&#10;Example:&#10;200 g chicken&#10;1 onion"></textarea>
+          <textarea id="addIngredients" class="input textarea" placeholder="Ingredients (one per line)"></textarea>
           <textarea id="addMethod" class="input textarea" placeholder="Method (steps)"></textarea>
-          <textarea id="addVariations" class="input textarea" placeholder="Variations (swaps / upgrades)"></textarea>
+          <textarea id="addVariations" class="input textarea" placeholder="Variations"></textarea>
         </div>
 
         <div class="row">
@@ -215,7 +222,7 @@
           <button id="addResetBtn" class="btn subtle">Reset</button>
         </div>
 
-        <div class="small note">Tip: Cocktail adds the “Alcohol” allergen tag automatically.</div>
+        <div class="small note">Cocktails automatically get the “Alcohol” allergen tag.</div>
       </div>
     </section>
 
@@ -223,7 +230,6 @@
     <section id="cocktailsView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Cocktails</div>
-        <div class="panel-sub">Adults only. Simple, repeatable drinks.</div>
 
         <div class="row">
           <input id="cocktailSearch" class="input" placeholder="Search cocktails..." />
@@ -242,8 +248,10 @@
       <div id="cocktailsList" class="cards"></div>
       <div id="cocktailsEmpty" class="empty hidden">No cocktail matches.</div>
     </section>
+
   </main>
 
-  <script src="script.js"></script>
+  <!-- CACHE BUST -->
+  <script src="script.js?v=1"></script>
 </body>
 </html>

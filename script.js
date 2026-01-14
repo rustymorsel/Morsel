@@ -1004,44 +1004,4 @@ function pickAllergens(pool, i, chance=0.15) {
     return uniqueWords([a,b]);
   }
   return [a];
-}
-// --- Age Gate (Cocktails) ---
-const ageGate = document.getElementById("ageGate");
-const ageYes = document.getElementById("ageYes");
-const ageNo = document.getElementById("ageNo");
-
-// If any of these are missing, the buttons won't work
-function showAgeGate() {
-  if (!ageGate) return;
-  ageGate.classList.remove("hidden");
-  ageGate.setAttribute("aria-hidden", "false");
-}
-
-function hideAgeGate() {
-  if (!ageGate) return;
-  ageGate.classList.add("hidden");
-  ageGate.setAttribute("aria-hidden", "true");
-}
-
-function hasAgePass() {
-  return localStorage.getItem("morsel_age_ok") === "yes";
-}
-
-function setAgePassYes() {
-  localStorage.setItem("morsel_age_ok", "yes");
-}
-
-if (ageYes) {
-  ageYes.addEventListener("click", () => {
-    setAgePassYes();
-    hideAgeGate();
-  });
-}
-
-if (ageNo) {
-  ageNo.addEventListener("click", () => {
-    // Optional: take them back to recipes / close cocktails
-    hideAgeGate();
-    alert("No worries — cocktails are hidden.");
-  });
-}
+       }

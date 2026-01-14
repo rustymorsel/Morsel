@@ -1,3 +1,41 @@
+// ================================
+// AGE GATE (Cocktails)
+// ================================
+const ageGate = document.getElementById("ageGate");
+const ageYes = document.getElementById("ageYes");
+const ageNo = document.getElementById("ageNo");
+
+function showAgeGate() {
+  if (!ageGate) return;
+  ageGate.classList.remove("hidden");
+}
+
+function hideAgeGate() {
+  if (!ageGate) return;
+  ageGate.classList.add("hidden");
+}
+
+function ageOk() {
+  return localStorage.getItem("morsel_age_ok") === "yes";
+}
+
+function setAgeOk() {
+  localStorage.setItem("morsel_age_ok", "yes");
+}
+
+if (ageYes) {
+  ageYes.onclick = () => {
+    setAgeOk();
+    hideAgeGate();
+  };
+}
+
+if (ageNo) {
+  ageNo.onclick = () => {
+    hideAgeGate();
+    alert("Cocktails are locked. You can still use recipes.");
+  };
+}
 /* Morsel — single-file JS app (static site, GitHub Pages friendly)
    - Food + Cocktails
    - Age gate for Cocktails

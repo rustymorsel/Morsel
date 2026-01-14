@@ -12,16 +12,15 @@
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-a{color:inherit}
+.hidden{display:none !important}
 
 .topbar{
   position:sticky;top:0;z-index:10;
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px 14px;
+  padding:14px;
   background:linear-gradient(180deg,#121214,#0f0f10);
   border-bottom:1px solid var(--line);
 }
-
 .brand{display:flex;gap:10px;align-items:center}
 .logo{
   width:40px;height:40px;border-radius:12px;
@@ -29,20 +28,18 @@ a{color:inherit}
   background:linear-gradient(135deg,var(--accent),#ff6a00);
   color:#111;font-weight:900;
 }
-.title{font-weight:800;letter-spacing:.3px}
+.title{font-weight:800}
 .tagline{color:var(--muted);font-size:12px;margin-top:2px}
-
 .top-actions{display:flex;gap:8px;align-items:center}
 
 .nav{
   position:sticky;top:69px;z-index:9;
   display:flex;gap:8px;overflow:auto;
   padding:10px 12px;
-  background:rgba(15,15,16,.9);
+  background:rgba(15,15,16,.92);
   backdrop-filter: blur(8px);
   border-bottom:1px solid var(--line);
 }
-
 .navbtn{
   border:1px solid var(--line);
   background:var(--panel);
@@ -56,10 +53,6 @@ a{color:inherit}
 .navbtn.active{border-color:rgba(255,176,0,.55);box-shadow:0 0 0 2px rgba(255,176,0,.12) inset}
 
 .main{padding:12px;max-width:1100px;margin:0 auto}
-
-.view{display:block}
-.hidden{display:none}
-
 .panel{
   background:var(--panel);
   border:1px solid var(--line);
@@ -120,12 +113,8 @@ a{color:inherit}
 }
 
 .cards{display:grid;grid-template-columns:1fr;gap:12px;margin:10px 0 24px}
-@media(min-width:760px){
-  .cards{grid-template-columns:1fr 1fr}
-}
-@media(min-width:1050px){
-  .cards{grid-template-columns:1fr 1fr 1fr}
-}
+@media(min-width:760px){.cards{grid-template-columns:1fr 1fr}}
+@media(min-width:1050px){.cards{grid-template-columns:1fr 1fr 1fr}}
 
 .card{
   background:var(--panel);
@@ -166,7 +155,6 @@ a{color:inherit}
 .heart.active{border-color:rgba(255,176,0,.45);box-shadow:0 0 0 2px rgba(255,176,0,.12) inset}
 
 .card-body{padding:0 12px 12px}
-
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .tab{
   border:1px solid var(--line);
@@ -179,19 +167,14 @@ a{color:inherit}
   font-size:12px;
 }
 .tab.active{border-color:rgba(255,176,0,.45);color:var(--text);background:rgba(255,176,0,.10)}
-
 .tabpanel{
   margin-top:10px;
   border-top:1px dashed rgba(255,255,255,.10);
   padding-top:10px;
-  color:var(--text);
   font-size:13px;
   line-height:1.45;
 }
-.pre{
-  white-space:pre-wrap;
-  color:var(--text);
-}
+.pre{white-space:pre-wrap}
 .small{font-size:12px;color:var(--muted)}
 .note{margin-top:8px}
 
@@ -209,7 +192,6 @@ a{color:inherit}
 .actionbtn.primary{border-color:rgba(255,176,0,.35);color:var(--text);background:rgba(255,176,0,.10)}
 
 .section-title{font-weight:900;margin:10px 0 6px}
-
 .empty{
   text-align:center;
   color:var(--muted);
@@ -219,14 +201,7 @@ a{color:inherit}
   background:rgba(255,255,255,.02);
 }
 
-.shoplist{
-  list-style:none;
-  padding:0;
-  margin:8px 0 30px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
+.shoplist{list-style:none;padding:0;margin:8px 0 30px;display:flex;flex-direction:column;gap:10px}
 .shopitem{
   background:var(--panel);
   border:1px solid var(--line);
@@ -246,11 +221,12 @@ a{color:inherit}
   cursor:pointer;
 }
 
+/* Modal */
 .modal{
   position:fixed;inset:0;
   background:rgba(0,0,0,.7);
   display:grid;place-items:center;
-  z-index:99;
+  z-index:9999;
   padding:18px;
 }
 .modal-card{
@@ -262,58 +238,3 @@ a{color:inherit}
 }
 .modal-title{font-weight:1000;font-size:16px}
 .modal-text{color:var(--muted);margin-top:6px;line-height:1.35}
-/* === AGE GATE === */
-.hidden { display: none !important; }
-
-.agegate {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-}
-
-.agegate-card {
-  width: min(420px, 100%);
-  background: #111;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 18px;
-  padding: 18px;
-  color: #fff;
-  text-align: center;
-}
-
-.agegate-card h2 {
-  margin: 0 0 8px 0;
-  font-size: 22px;
-}
-
-.agegate-card p {
-  margin: 0 0 14px 0;
-  opacity: 0.85;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.agegate-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.agegate-actions .btn {
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 0;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.agegate-actions .btn.subtle {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.25);
-  color: #fff;
-}

@@ -4,23 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Morsel</title>
-  <meta name="theme-color" content="#141414" />
+  <meta name="theme-color" content="#0f0f10" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- AGE VERIFICATION WALL (Cocktails) -->
-<div id="ageGate" class="agegate hidden">
-  <div class="agegate-card">
-    <h2>18+ only</h2>
-    <p>Cocktails contain alcohol. Are you 18 or older?</p>
-
-    <div class="agegate-actions">
-      <button id="ageYes" class="btn">Yes</button>
-      <button id="ageNo" class="btn subtle">No</button>
+  <!-- AGE GATE MODAL -->
+  <div id="ageGate" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-title">Age check</div>
+      <div class="modal-text">
+        Cocktails contain alcohol. Are you of legal drinking age where you live?
+      </div>
+      <div class="row">
+        <button id="ageYes" class="btn">Yes</button>
+        <button id="ageNo" class="btn subtle">No</button>
+      </div>
+      <div class="small note">Saved on this device only.</div>
     </div>
   </div>
-</div>
+
   <header class="topbar">
     <div class="brand">
       <div class="logo">M</div>
@@ -32,7 +35,7 @@
 
     <div class="top-actions">
       <button id="unitsBtn" class="chip" title="Toggle units">Metric</button>
-      <button id="seedBtn" class="chip subtle" title="Rebuild demo catalogue (keeps your own recipes)">Seed</button>
+      <button id="seedBtn" class="chip subtle" title="Rebuild demo catalogue">Seed</button>
     </div>
   </header>
 
@@ -42,7 +45,7 @@
     <button class="navbtn" data-view="bookView">My Book</button>
     <button class="navbtn" data-view="shopView">Shop</button>
     <button class="navbtn" data-view="addView">Add</button>
-    <button class="navbtn" data-view="cocktailsView" id="cocktailsTab">Cocktails</button>
+    <button class="navbtn" data-view="cocktailsView">Cocktails</button>
   </nav>
 
   <main class="main">
@@ -50,7 +53,7 @@
     <section id="recipesView" class="view">
       <div class="panel">
         <div class="panel-title">Recipes</div>
-        <div class="panel-sub">Search by name, mood tags, ingredients, or allergens.</div>
+        <div class="panel-sub">Search by name, mood, ingredients, or allergens.</div>
 
         <div class="row">
           <input id="searchInput" class="input" placeholder="Search recipes, moods, ingredients..." />
@@ -93,19 +96,17 @@
       </div>
 
       <div id="recipesList" class="cards"></div>
-      <div id="recipesEmpty" class="empty hidden">
-        No matches. Try removing filters or searching a simpler word.
-      </div>
+      <div id="recipesEmpty" class="empty hidden">No matches. Try removing filters.</div>
     </section>
 
     <!-- FINDER -->
     <section id="finderView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Ingredient Finder</div>
-        <div class="panel-sub">Add what you’ve got. Morsel shows what you can cook.</div>
+        <div class="panel-sub">Add what you have — see what you can make.</div>
 
         <div class="row">
-          <input id="finderInput" class="input" placeholder="Type an ingredient and tap Add (e.g., onion)" />
+          <input id="finderInput" class="input" placeholder="Type ingredient and tap Add (e.g., onion)" />
           <button id="finderAddBtn" class="btn">Add</button>
         </div>
 
@@ -121,6 +122,7 @@
             <option value="food">Food</option>
             <option value="all">All (Food + Cocktails)</option>
           </select>
+
           <select id="finderAllergenFilter" class="input select">
             <option value="">All allergens (no filter)</option>
             <option value="Gluten">Gluten</option>
@@ -134,6 +136,7 @@
             <option value="Sesame">Sesame</option>
             <option value="Alcohol">Alcohol</option>
           </select>
+
           <button id="finderClearBtn" class="btn subtle">Clear</button>
         </div>
       </div>
@@ -146,7 +149,7 @@
     <section id="bookView" class="view hidden">
       <div class="panel">
         <div class="panel-title">My Book</div>
-        <div class="panel-sub">Your favourites + your own recipes.</div>
+        <div class="panel-sub">Favourites + your own recipes.</div>
       </div>
 
       <div class="split">
@@ -159,19 +162,19 @@
         <div>
           <div class="section-title">My Recipes</div>
           <div id="myRecipesList" class="cards"></div>
-          <div id="myRecipesEmpty" class="empty hidden">No personal recipes yet. Add one in the Add tab.</div>
+          <div id="myRecipesEmpty" class="empty hidden">No personal recipes yet. Add one in Add.</div>
         </div>
       </div>
     </section>
 
-    <!-- SHOPPING -->
+    <!-- SHOP -->
     <section id="shopView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Shopping List</div>
-        <div class="panel-sub">Dictate items using your phone keyboard mic. Tap an item to tick it off.</div>
+        <div class="panel-sub">Use your phone’s mic on the keyboard to dictate items.</div>
 
         <div class="row">
-          <input id="shopInput" class="input" placeholder="Add an item (e.g., 2 tomatoes, milk, limes)" />
+          <input id="shopInput" class="input" placeholder="Add an item (e.g., milk, limes, 2 tomatoes)" />
           <button id="shopAddBtn" class="btn">Add</button>
           <button id="shopClearBtn" class="btn subtle">Clear</button>
         </div>
@@ -185,7 +188,7 @@
     <section id="addView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Add a Recipe</div>
-        <div class="panel-sub">Keep it rustic and honest. Short beats fancy.</div>
+        <div class="panel-sub">Tabs are auto-built: History / Ingredients / Method / Variations / Rate</div>
 
         <div class="grid">
           <input id="addName" class="input" placeholder="Recipe name" />
@@ -194,19 +197,16 @@
             <option value="cocktail">Cocktail</option>
           </select>
 
-          <input id="addMoods" class="input" placeholder="Mood tags (comma separated, max 3) e.g., Comfort, Quick" />
+          <input id="addMoods" class="input" placeholder="Mood tags (comma, max 3) e.g., Comfort, Quick" />
           <input id="addLevel" class="input" type="number" min="1" max="5" placeholder="Morsel Level (1-5)" />
 
-          <input id="addAllergens" class="input" placeholder="Allergens (comma separated) e.g., Gluten, Dairy" />
-          <input id="addServes" class="input" placeholder="Serves (e.g., 2) / For cocktails: glasses (e.g., 1)" />
+          <input id="addAllergens" class="input" placeholder="Allergens (comma) e.g., Dairy, Gluten" />
+          <input id="addServes" class="input" placeholder="Serves (food) / Glasses (cocktails)" />
 
-          <textarea id="addHistory" class="input textarea" placeholder="Meal history (why it exists, where it came from)"></textarea>
-
+          <textarea id="addHistory" class="input textarea" placeholder="Meal history"></textarea>
           <textarea id="addIngredients" class="input textarea" placeholder="Ingredients (one per line)&#10;Example:&#10;200 g chicken&#10;1 onion"></textarea>
-
           <textarea id="addMethod" class="input textarea" placeholder="Method (steps)"></textarea>
-
-          <textarea id="addVariations" class="input textarea" placeholder="Variations (swaps, optional upgrades, dietary mods)"></textarea>
+          <textarea id="addVariations" class="input textarea" placeholder="Variations (swaps / upgrades)"></textarea>
         </div>
 
         <div class="row">
@@ -214,9 +214,7 @@
           <button id="addResetBtn" class="btn subtle">Reset</button>
         </div>
 
-        <div class="small note">
-          Tip: If you choose “Cocktail”, Morsel automatically adds the “Alcohol” allergen tag.
-        </div>
+        <div class="small note">Tip: Cocktail adds the “Alcohol” allergen tag automatically.</div>
       </div>
     </section>
 
@@ -224,12 +222,12 @@
     <section id="cocktailsView" class="view hidden">
       <div class="panel">
         <div class="panel-title">Cocktails</div>
-        <div class="panel-sub">Adults only. Simple, honest drinks—no fluff.</div>
+        <div class="panel-sub">Adults only. Simple, repeatable drinks.</div>
 
         <div class="row">
           <input id="cocktailSearch" class="input" placeholder="Search cocktails..." />
           <select id="cocktailMood" class="input select">
-            <option value="">All moods (no filter)</option>
+            <option value="">All moods</option>
             <option value="Fresh">Fresh</option>
             <option value="Date night">Date night</option>
             <option value="Party">Party</option>
@@ -245,23 +243,6 @@
     </section>
   </main>
 
-  <!-- AGE GATE MODAL -->
-  <div id="ageGate" class="modal hidden">
-    <div class="modal-card">
-      <div class="modal-title">Age check</div>
-      <div class="modal-text">
-        Cocktails include alcohol. Are you of legal drinking age in your country?
-      </div>
-      <div class="row">
-        <button id="ageYes" class="btn">Yes</button>
-        <button id="ageNo" class="btn subtle">No</button>
-      </div>
-      <div class="small note">
-        Your choice is saved on this device only.
-      </div>
-    </div>
-  </div>
-
   <script src="script.js"></script>
 </body>
-  </html>
+</html>

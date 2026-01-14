@@ -1061,3 +1061,8 @@
   }
 })();
 ```0
+// DEBUG: force age gate to show on load (remove after test)
+setTimeout(() => {
+  const gate = document.getElementById("ageGate");
+  if (gate) gate.classList.remove("hidden");
+}, 500);
